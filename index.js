@@ -12,7 +12,7 @@ module.exports = {
         // read binary data
         var bitmap = fs.readFileSync(file);
         // convert binary data to base64 encoded string
-        return new Buffer(bitmap).toString('base64');
+        return new Buffer.from(bitmap).toString('base64');
     },
     /**
      * @param (string) base64str
@@ -21,7 +21,7 @@ module.exports = {
      */
     base64Decode: (base64str, file) => {
         // create buffer object from base64 encoded string, it is important to tell the constructor that the string is base64 encoded
-        var bitmap = new Buffer(base64str, 'base64');
+        var bitmap = new Buffer.from(base64str, 'base64');
         // write buffer to file
         fs.writeFileSync(file, bitmap);
     },
@@ -52,7 +52,7 @@ module.exports = {
      * @desc Function to convert the string content to base64 content.
      */
     strToBase64: (str) =>{
-        return new Buffer(str).toString('base64')
+        return new Buffer.from(str).toString('base64')
     },
     /**
      * @return (String)
@@ -60,7 +60,7 @@ module.exports = {
      * @desc Function to convert the base64 content to string.
      */
     base64ToStr: (base64Str) =>{
-        return new Buffer(base64Str, 'base64').toString('ascii')
+        return new Buffer.from(base64Str, 'base64').toString('ascii')
     }
 };
 
